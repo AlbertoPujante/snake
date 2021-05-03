@@ -2,32 +2,38 @@
 import java.awt.Point;
 import java.util.Random;
 
-public class Portal {
+public class Portal 
+{
 
     private int nature; //-1 for snake , +1 for ladder
     private int start;
     private int end;
 
-    public Portal(int maxCells) {   //creates random portals
+    public Portal(int maxCells) 
+    {   //creates random portals
         Random luck = new Random();
         start = luck.nextInt(maxCells);
         end = luck.nextInt(maxCells);
-        if (start < end) {
+        if (start < end) 
+        {
             nature = 1;
         } else {
             nature = -1;
         }
     }
 
-    public int returnNature() {
+    public int returnNature() 
+    {
         return nature;
     }
 
-    public int returnStart() {
+    public int returnStart() 
+    {
         return start;
     }
 
-    public int returnEnd() {
+    public int returnEnd() 
+    {
         return end;
     }
 

@@ -8,21 +8,25 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 //needs massive improvements
-public class CustomizeBoardScreen extends JPanel {
+public class CustomizeBoardScreen extends JPanel 
+{
 
     JButton go;
     JButton quit;
     MainWindow mw;
 
-    public void quitButtonActionListener() {
+    public void quitButtonActionListener() 
+    {
         mw.showCard("Two");
     }
 
-    public void goButtonActionListener() {
+    public void goButtonActionListener() 
+    {
         mw.showCard("Four");
     }
 
-    public CustomizeBoardScreen(MainWindow mw) {
+    public CustomizeBoardScreen(MainWindow mw) 
+    {
         this.mw = mw;
 
         JLabel mess = new JLabel("Customize Board [Under Construction] ");
@@ -35,14 +39,18 @@ public class CustomizeBoardScreen extends JPanel {
         go = new JButton("Start Game");
         quit = new JButton("Back");
 
-        go.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
+        go.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent event) 
+            {
                 goButtonActionListener();
             }
         });
 
-        quit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
+        quit.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent event) 
+            {
                 quitButtonActionListener();
             }
         });

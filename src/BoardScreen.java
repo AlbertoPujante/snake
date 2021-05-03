@@ -1,17 +1,16 @@
-
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.Random;
-
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-public class BoardScreen extends JPanel {
+public class BoardScreen extends JPanel 
+{
 
     /**
      *
@@ -36,47 +35,58 @@ public class BoardScreen extends JPanel {
     JButton go;
     JButton quit;
 
-    public void quitButtonActionListener() {
-        if (JOptionPane.showConfirmDialog(this, "Are you sure?") == JOptionPane.OK_OPTION) {
+    public void quitButtonActionListener() 
+    {
+        if (JOptionPane.showConfirmDialog(this, "Are you sure?") == JOptionPane.OK_OPTION) 
+        {
             System.exit(0);
         }
     }
 
-    public void goButtonActionListener() {
+    public void goButtonActionListener() 
+    {
         mw.showCard("Two");
         //mw.setBoard();
         mw.resetAll();
     }
 
-    public void setMaxPlayers(int m) {
+    public void setMaxPlayers(int m) 
+    {
         maxPlayers = m;
     }
 
-    public int getMaxPlayers() {
+    public int getMaxPlayers() 
+    {
         return maxPlayers;
     }
 
-    public void setUpPlayers() {
+    public void setUpPlayers() 
+    {
         players = new ArrayList<Player>();
-        for (int i = 0; i < getMaxPlayers(); i++) {
+        for (int i = 0; i < getMaxPlayers(); i++) 
+        {
             players.add(new Player(i));
         }
         //get and add player(s) names
 
         //manual color entry - automate later
-        if (0 < getMaxPlayers()) {
+        if (0 < getMaxPlayers()) 
+        {
             players.get(0).setPlayerColor(Color.green);
         }
-        if (1 < getMaxPlayers()) {
+        if (1 < getMaxPlayers()) 
+        {
             players.get(1).setPlayerColor(Color.blue);
         }
-        if (2 < getMaxPlayers()) {
+        if (2 < getMaxPlayers()) 
+        {
             players.get(2).setPlayerColor(Color.red);
         }
 
     }
 
-    public BoardScreen(MainWindow mw) {
+    public BoardScreen(MainWindow mw) 
+    {
         this.mw = mw;
 
         currPlayer = 0;
@@ -84,14 +94,18 @@ public class BoardScreen extends JPanel {
         go = J_BUTTON_NEW_GAME;
         quit = J_BUTTON_QUIT;
 
-        go.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
+        go.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent event) 
+            {
                 goButtonActionListener();
             }
         });
 
-        quit.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent event) {
+        quit.addActionListener(new ActionListener() 
+        {
+            public void actionPerformed(ActionEvent event) 
+            {
                 quitButtonActionListener();
             }
         });
@@ -135,9 +149,12 @@ public class BoardScreen extends JPanel {
     }
     private static final JButton J_BUTTON_TIRADA = new JButton("Roll the die!");
 
-    private ActionListener Tirada() {
-        return new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
+    private ActionListener Tirada() 
+    {
+        return new ActionListener()
+        {
+            public void actionPerformed(ActionEvent e) 
+            {
                 Random die = new Random();
                 int a = die.nextInt(6) + 1;
                 dieResults.setText("You rolled a " + a);
@@ -150,16 +167,21 @@ public class BoardScreen extends JPanel {
 
                 players.get(currPlayer).incPlayerScore(1);
 
-                for (Player p : players) {
-                    if (p.getPosition() >= x * y - 1) {
+                for (Player p : players) 
+                {
+                    if (p.getPosition() >= x * y - 1) 
+                    {
                         success.setText("And the winner is: " + p.getName() + "\nYour score: " + p.getPlayerScore());
                         roll.setVisible(false);
                     }
                 }
 
-                if (currPlayer == maxPlayers - 1) {
+                if (currPlayer == maxPlayers - 1) 
+                {
                     currPlayer = 0;
-                } else {
+                } 
+                else 
+                {
                     currPlayer += 1;
                 }
 
@@ -172,7 +194,8 @@ public class BoardScreen extends JPanel {
     private static final JLabel J_LABEL_SUCCESS = new JLabel("");
     private static final JLabel J_LABEL_EXTRA_INFO = new JLabel();
 
-    private void LabelWhichPlayer() {
+    private void LabelWhichPlayer() 
+    {
         //String playername = "Player 1";
         //currPlayer = 0;
         whichPlayer = J_LABEL_EXTRA_INFO;
@@ -189,7 +212,8 @@ public class BoardScreen extends JPanel {
         stats.add(quit);
     }
 
-    private void NewBoardDrawing() {
+    private void NewBoardDrawing() 
+    {
         bd = new BoardDrawing(x, y, this);
         bd.setVisible(true);
         //bd.setSize(getSize());
